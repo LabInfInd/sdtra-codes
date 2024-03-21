@@ -1,0 +1,17 @@
+﻿################################################################################
+# Il file gitignore è stato creato automaticamente da Microsoft(R) Visual Studio.
+################################################################################
+
+/1_Bitmap/.vs/1_Bitmap
+/1_Bitmap/1_Bitmap/x64/Debug
+/1_Bitmap/x64/Debug
+/1_Bitmap/1_Bitmap.sln
+/1_Bitmap/1_Bitmap.vcxproj
+/1_Bitmap/1_Bitmap.vcxproj.filters
+/1_Bitmap/1_Bitmap.vcxproj.user
+/1_Bitmap/conv3_x.bmp
+/1_Bitmap/conv3_y.bmp
+/1_Bitmap/convoluzione_blurk.bmp
+/1_Bitmap/convoluzione_blurk_no_pad.bmp
+/1_Bitmap/convoluzione_dimk.bmp
+/1_Bitmap/scacchiera_8_16.bmp

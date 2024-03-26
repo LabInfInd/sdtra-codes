@@ -12,7 +12,7 @@ int main()
      */
 
     //TODO: Aggiornare con percorso relativo o assoluto dell'immagine da aprire
-    const char* imagePath = "../images/Immagini Bitmap TEST/scacchiera.bmp";
+    const char* imagePath = "../images/Immagini Bitmap TEST/constrastedBandiera3.bmp";
     immagine im1((char*)imagePath);
     int w = im1.getWidth();
     int h = im1.getHeight();
@@ -53,9 +53,9 @@ int main()
     im2.salvaImmagine((char*)"conv3_x.bmp");
 
     // Kernel sobel Y
-    k[0][0] = 1; k[0][1] = 2; k[0][2] = 1;
+    k[0][0] = -1; k[0][1] = -2; k[0][2] = -1;
     k[1][0] = 0; k[1][1] = 0; k[1][2] = 0;
-    k[2][0] = -1; k[2][1] = -2; k[2][2] = -1;
+    k[2][0] = 1; k[2][1] = 2; k[2][2] = 1;
     
     res = im1.conv(dim, k);
 

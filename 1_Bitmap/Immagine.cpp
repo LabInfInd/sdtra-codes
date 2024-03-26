@@ -179,6 +179,8 @@ unsigned char** immagine::conv(int dim, int** con) {
                         0000000
     */ 
 
+    float** C;
+
     // Step 1: calcolare dimensioni nuova matrice (in questo caso, sono le stesse dell'immagine di partenza)
     int h = biHeight;
     int w = biWidth;
@@ -193,6 +195,11 @@ unsigned char** immagine::conv(int dim, int** con) {
     B = new unsigned char* [h];
     for (int i = 0; i < h; i++) {
         B[i] = new unsigned char[w];
+    }
+
+    C = new float* [h];
+    for (int i = 0; i < h; i++) {
+        C[i] = new float[w];
     }
 
     int sum; // Memorizza temporaneamente la somma pesata relativa al pixel
@@ -217,8 +224,20 @@ unsigned char** immagine::conv(int dim, int** con) {
                 }
             }
 
+            C[i][j] = abs(sum);
+
+            if (C[i][j] > 255) {
+                B[i][j] = 255;
+            }
+            else if (C[i][j] < 0) {
+                B[i][j] = 0;
+            }
+            else {
+                B[i][j] = (unsigned char)C[i][j];
+            }
+
             // Gestisco i casi in cui il valore dei pixel sfora il range consentito dalla codifica
-            if (sum > 255) {
+            /*if (sum > 255) {
                 B[i][j] = 255;
             }
             else if (sum < 0) {
@@ -226,7 +245,7 @@ unsigned char** immagine::conv(int dim, int** con) {
             }
             else {
                 B[i][j] = sum;
-            }
+            }*/
         }
 
     }
@@ -272,6 +291,8 @@ unsigned char** immagine::conv(int dim, float** con, bool padding)
             B[i] = new unsigned char[w];
         }
 
+        
+
         for (int i = 0; i < biHeight; i++)
         {
             for (int j = 0; j < biWidth; j++)
@@ -292,7 +313,7 @@ unsigned char** immagine::conv(int dim, float** con, bool padding)
                             sum += (con[ik][jl]) * (mat[ii][jj]);
                     }
                 }
-
+               
                 // Gestisco i casi in cui il valore dei pixel sfora il range consentito dalla codifica
                 if (sum > 255) {
                     B[i][j] = 255;
